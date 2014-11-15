@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dv409_AdventureWorksAssignmentModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="dv409_AdventureWorksAssignmentModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="uspAddContact" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspAddContact" />
+    <FunctionImportMapping FunctionImportName="uspAddContactEF" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspAddContactEF" />
+    <FunctionImportMapping FunctionImportName="uspAddContact_OUTPUT" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspAddContact_OUTPUT" />
+    <FunctionImportMapping FunctionImportName="uspAddContact_SELECT" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspAddContact_SELECT" />
+    <FunctionImportMapping FunctionImportName="uspGetContact" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspGetContact">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dv409_AdventureWorksAssignmentModel.uspGetContact_Result">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspRemoveContact" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspRemoveContact" />
+    <FunctionImportMapping FunctionImportName="uspUpdateContact" FunctionName="dv409_AdventureWorksAssignmentModel.Store.uspUpdateContact" />
+  </EntityContainerMapping>
+</Mapping>
