@@ -32,7 +32,7 @@ namespace AdventurousContacts.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         [HttpPost]
@@ -41,10 +41,17 @@ namespace AdventurousContacts.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repository.Add(contact);
-                _repository.Save();
-
-                return RedirectToAction("Index");
+                try
+                {
+                    _repository.Add(contact);
+                    _repository.Save();
+                    TempData.Add("contact", contact);
+                    return RedirectToAction("Create");
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError(String.Empty, "An error accured when saving contact.");               
+                }
             }
 
             return View("Create", contact);
