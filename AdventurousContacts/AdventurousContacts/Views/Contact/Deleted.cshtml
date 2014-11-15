@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Contact deleted";
+}
+
+<h2>Contact deleted.</h2>
+@Html.Partial("DeleteSuccessMessage", @TempData["contact"])
+<p>
+    @Html.ActionLink("Back to contact list", "Index")
+</p>

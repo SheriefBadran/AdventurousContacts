@@ -217,7 +217,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Create.cshtml" />
-    <Content Include="Views\Shared\PartialSuccessMessage.cshtml" />
+    <Content Include="Views\Shared\AddSuccessMessage.cshtml" />
+    <Content Include="Views\Contact\NotFound.cshtml" />
+    <Content Include="Views\Contact\Delete.cshtml" />
+    <Content Include="Views\Contact\Deleted.cshtml" />
+    <Content Include="Views\Shared\DeleteSuccessMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -35,6 +35,7 @@ namespace AdventurousContacts.Controllers
             return View("Create");
         }
 
+        // TODO: Bind all the object properties.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Contact contact)
@@ -60,6 +61,43 @@ namespace AdventurousContacts.Controllers
         public ActionResult Update()
         {
             return View();
+        }
+
+        public ActionResult Delete(int id = 0)
+        {
+            var contact = _repository.GetContactById(id);
+            if (contact == null)
+            {
+                return View("NotFound");
+            }
+
+            return View("Delete", contact);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try
+            {
+                var contact = _repository.GetContactById(id);
+                _repository.Delete(contact);
+                _repository.Save();
+                TempData.Add("contact", contact);
+
+                return RedirectToAction("Deleted");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "An error accured when deleting the contact.");
+            }
+
+            return View("Delete", _repository.GetContactById(id));
+        }
+
+        public ActionResult Deleted()
+        {
+            return View("Deleted");
         }
     }
 }

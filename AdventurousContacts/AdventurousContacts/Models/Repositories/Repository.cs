@@ -20,6 +20,16 @@ namespace AdventurousContacts.Models.Repositories
             _entities.uspAddContact_SELECT(contact.FirstName, contact.LastName, contact.EmailAddress);
         }
 
+        public void Delete(Contact contact)
+        {
+            _entities.uspRemoveContact(contact.ContactID);
+        }
+
+        public Contact GetContactById(int contactId)
+        {
+            return _entities.Contacts.Find(contactId);
+        }
+
         public void Save()
         {
             _entities.SaveChanges();

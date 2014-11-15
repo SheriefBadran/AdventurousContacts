@@ -1,0 +1,6 @@
+﻿@model AdventurousContacts.Models.Contact
+
+@if (Model != null)
+{
+    <p>@String.Format("{0} {1} is deleted.", Model.FirstName, Model.LastName)</p>
+}
