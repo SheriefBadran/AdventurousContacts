@@ -35,10 +35,9 @@ namespace AdventurousContacts.Controllers
             return View("Create");
         }
 
-        // TODO: Bind all the object properties.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Contact contact)
+        public ActionResult Create([Bind(Include="FirstName, LastName, EmailAddress")]Contact contact)
         {
             if (ModelState.IsValid)
             {
@@ -58,9 +57,15 @@ namespace AdventurousContacts.Controllers
             return View("Create", contact);
         }
 
-        public ActionResult Update()
+        public ActionResult Edit(int id = 0)
         {
-            return View();
+            var contact = _repository.GetContactById(id);
+            if (contact == null)
+            {
+                return View("NotFound");
+            }
+
+            return View("Edit", contact);
         }
 
         public ActionResult Delete(int id = 0)
