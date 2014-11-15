@@ -35,16 +35,16 @@ namespace AdventurousContacts.Models
             // ContactID is not set, ContactID has value 0. 0-value indicates insert new contact.
             public int ContactID { get; set; }
 
-            [Required(ErrorMessage = "E-Post måste anges.")]
+            [Required(ErrorMessage = "Email address is required.")]
             [StringLength(50)]
-            [EmailAddress(ErrorMessage = "En giltig E-Post måste anges.")]
+            [EmailAddress(ErrorMessage = "Please enter a valid email address")]
             public string EmailAddress { get; set; }
 
-            [Required(ErrorMessage = "Ett förnamn måste anges.")]
+            [Required(ErrorMessage = "First name is required.")]
             [StringLength(50)]
             public string FirstName { get; set; }
 
-            [Required(ErrorMessage = "Ett efternamn måste anges.")]
+            [Required(ErrorMessage = "Last name is required.")]
             [StringLength(50)]
             public string LastName { get; set; }
         }

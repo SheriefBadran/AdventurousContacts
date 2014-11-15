@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 namespace AdventurousContacts.Models.Repositories
 {
-    public interface IRepository
+    public interface IRepository: IDisposable
     {
         IEnumerable<Contact> GetContacts();
-        void InsertContact(Contact contact);
+        void Add(Contact contact);
         void Save();
     }
 }

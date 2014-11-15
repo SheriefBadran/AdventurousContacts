@@ -23,21 +23,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var contact in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
+            @Html.DisplayFor(modelItem => contact.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            @Html.DisplayFor(modelItem => contact.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EmailAddress)
+            @Html.DisplayFor(modelItem => contact.EmailAddress)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ContactID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ContactID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ContactID })
+            @Html.ActionLink("Edit", "Edit", new { id = contact.ContactID }) |
+            @Html.ActionLink("Details", "Details", new { id = contact.ContactID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = contact.ContactID })
         </td>
     </tr>
 }

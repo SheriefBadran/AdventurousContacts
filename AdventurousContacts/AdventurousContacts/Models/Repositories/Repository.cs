@@ -14,14 +14,39 @@ namespace AdventurousContacts.Models.Repositories
             return _entities.Contacts.ToList();
         }
 
-        public void InsertContact(Contact contact) 
+        public void Add(Contact contact) 
         {
-            _entities.Contacts.Add(contact);
+            //_entities.Contacts.Add(contact);
+            _entities.uspAddContact_SELECT(contact.FirstName, contact.LastName, contact.EmailAddress);
         }
 
         public void Save()
         {
             _entities.SaveChanges();
         }
+
+        #region IDisposable
+
+        private bool disposed = false;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _entities.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
     }
 }

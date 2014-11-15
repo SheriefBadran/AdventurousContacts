@@ -21,7 +21,6 @@ C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\Advent
 C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts\bin\System.Web.WebPages.Razor.xml
 C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts\bin\Antlr3.Runtime.pdb
 C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts\bin\Newtonsoft.Json.xml
-C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts\obj\Debug\AdventurousContacts.csprojResolveAssemblyReference.cache
 C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts\obj\Debug\AdventurousContacts.dll
 C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts\obj\Debug\AdventurousContacts.pdb
 C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts\bin\EntityFramework.dll

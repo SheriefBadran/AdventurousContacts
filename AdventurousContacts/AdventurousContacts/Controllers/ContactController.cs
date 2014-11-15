@@ -1,4 +1,5 @@
-﻿using AdventurousContacts.Models.Repositories;
+﻿using AdventurousContacts.Models;
+using AdventurousContacts.Models.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,15 @@ namespace AdventurousContacts.Controllers
 
         IRepository _repository;
 
-        //public ContactController()
-        //    : this(new Repository())
-        //{
-        //}
-
         public ContactController(IRepository repository)
         {
             _repository = repository;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _repository.Dispose();
+            base.Dispose(disposing);
         }
 
         // GET: Contact
@@ -31,6 +33,21 @@ namespace AdventurousContacts.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                _repository.Add(contact);
+                _repository.Save();
+
+                return RedirectToAction("Index");
+            }
+
+            return View("Create", contact);
         }
 
         public ActionResult Update()
