@@ -17,12 +17,14 @@ namespace AdventurousContacts.Tests.Controllers
     public class ContactControllerTest
     {
         private Mock<IRepository> _repository;
+        private ContactController _controller;
         private Contact _expectedContact;
 
         [TestInitialize]
         public void TestInitialize()
         {
             _repository = new Mock<IRepository>();
+            _controller = new ContactController(_repository.Object);
             _expectedContact = new Contact()
             {
                 ContactID = 0,
@@ -43,8 +45,7 @@ namespace AdventurousContacts.Tests.Controllers
             _repository.Setup(repo => repo.GetContacts())
                 .Returns(expectedContactList);
 
-            var controller = new ContactController(_repository.Object);
-            dynamic result = controller.Index();
+            dynamic result = _controller.Index();
 
             Assert.AreSame(expectedContactList, result.Model);
         }
@@ -52,8 +53,7 @@ namespace AdventurousContacts.Tests.Controllers
         [TestMethod]
         public void CreateShouldInvokeCreateActionsWhenModelStateIsValid()
         {
-            var controller = new ContactController(_repository.Object);
-            controller.Create(It.IsAny<Contact>());
+            _controller.Create(It.IsAny<Contact>());
 
             _repository.Verify(obj => obj.Add(It.IsAny<Contact>()), Times.Once());
             _repository.Verify(obj => obj.Save(), Times.Once());
@@ -62,19 +62,15 @@ namespace AdventurousContacts.Tests.Controllers
         [TestMethod]
         public void CreateShouldRedirectToCreateActionAfterSavingContact()
         {
-            var controller = new ContactController(_repository.Object);
-            var result = controller.Create(It.IsAny<Contact>()) as RedirectToRouteResult;
-
+            var result = _controller.Create(It.IsAny<Contact>()) as RedirectToRouteResult;
             Assert.AreEqual(result.RouteValues["Action"], "Create");
         }
 
         [TestMethod]
         public void CreateShouldReturnCreateViewWhenModelStateIsValidFails()
         {
-            var controller = new ContactController(_repository.Object);
-
-            controller.ModelState.AddModelError("notvalid", "testerror");     
-            dynamic result = controller.Create(It.IsAny<Contact>());
+            _controller.ModelState.AddModelError("notvalid", "testerror");
+            dynamic result = _controller.Create(It.IsAny<Contact>());
 
             Assert.AreSame("Create", result.ViewName);
         }
@@ -88,10 +84,8 @@ namespace AdventurousContacts.Tests.Controllers
             _repository.Setup(obj => obj.GetContactById(existingContactId))
                 .Returns(_expectedContact);
 
-            var controller = new ContactController(_repository.Object);
-
             // Try delete existing contact
-            dynamic result = controller.Delete(existingContactId);
+            dynamic result = _controller.Delete(existingContactId);
 
             Assert.AreSame("Delete", result.ViewName);
         }
@@ -106,10 +100,8 @@ namespace AdventurousContacts.Tests.Controllers
             _repository.Setup(obj => obj.GetContactById(existingContactId))
                 .Returns(_expectedContact);
 
-            var controller = new ContactController(_repository.Object);
-
             // Try delete nonexisting contact
-            dynamic result = controller.Delete(nonExistingContactId);
+            dynamic result = _controller.Delete(nonExistingContactId);
 
             Assert.AreSame("NotFound", result.ViewName);
         }
@@ -120,12 +112,10 @@ namespace AdventurousContacts.Tests.Controllers
             int existingContactId = 1;
             _expectedContact.ContactID = existingContactId;
 
-            var controller = new ContactController(_repository.Object);
-
             _repository.Setup(obj => obj.GetContactById(existingContactId))
                 .Returns(_expectedContact);
 
-            dynamic result = controller.DeleteConfirmed(existingContactId);
+            dynamic result = _controller.DeleteConfirmed(existingContactId);
 
             _repository.Verify(obj => obj.Delete(_expectedContact), Times.Once());
             _repository.Verify(obj => obj.Save(), Times.Once());     
@@ -134,9 +124,7 @@ namespace AdventurousContacts.Tests.Controllers
         [TestMethod]
         public void DeleteConfirmedShouldReturnRedirectToDeletedAction()
         {
-            var controller = new ContactController(_repository.Object);
-            var result = controller.DeleteConfirmed(1) as RedirectToRouteResult;
-
+            var result = _controller.DeleteConfirmed(1) as RedirectToRouteResult;
             Assert.AreEqual(result.RouteValues["Action"], "Deleted");
         }
     }
