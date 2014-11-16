@@ -127,5 +127,12 @@ namespace AdventurousContacts.Tests.Controllers
             var result = _controller.DeleteConfirmed(1) as RedirectToRouteResult;
             Assert.AreEqual(result.RouteValues["Action"], "Deleted");
         }
+
+        [TestMethod]
+        public void DeletedShouldReturnDeletedView()
+        {
+            dynamic result = _controller.Deleted();
+            Assert.AreEqual("Deleted", result.ViewName);
+        }
     }
 }
