@@ -28,3 +28,5 @@ C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\Advent
 C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts.Tests\bin\Debug\Microsoft.Practices.Unity.dll
 C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts.Tests\bin\Debug\Unity.Mvc5.dll
 C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts.Tests\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts.Tests\bin\Debug\Moq.dll
+C:\Users\Sherief\Documents\GitHub\AdventurousContacts\AdventurousContacts\AdventurousContacts.Tests\bin\Debug\Moq.xml
