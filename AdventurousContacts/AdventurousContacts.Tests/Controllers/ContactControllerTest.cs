@@ -51,6 +51,13 @@ namespace AdventurousContacts.Tests.Controllers
         }
 
         [TestMethod]
+        public void CreateShouldReturnCreateView()
+        {
+            dynamic result = _controller.Create();
+            Assert.AreEqual("Create", result.ViewName);
+        }
+
+        [TestMethod]
         public void CreateShouldInvokeCreateActionsWhenModelStateIsValid()
         {
             _controller.Create(It.IsAny<Contact>());
